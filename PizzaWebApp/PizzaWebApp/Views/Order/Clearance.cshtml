@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Clearance";
+}
+
+<h1>Please provide your store clearance code at this time. </h1>
+
+
+@*@Html.BeginForm("Clearance","Order",FormMethod.Post,antiforgery:true)*@
+<form asp-action="Clearance" asp-controller="Order">
+    <label for="cc"></label>
+    <input type="text" value="" name="cc"><br>
+    <input type="submit" value="Submit">
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,46 @@
+﻿@model PizzaWebApp.Models.PizzaViewModel
+@{
+    ViewData["Title"] = "Make";
+}
+
+<h1>Let's get started.</h1>
+<body>
+    <p>
+        
+        <br />
+        <br /> First, select a pizza type.
+
+        
+
+        
+        <form asp-action="Make">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            @Html.RadioButtonFor(t => t.PizzaType, "Cheese") <text>Cheese</text><br />
+            @Html.RadioButtonFor(t => t.PizzaType, "Pepperoni") <text>Pepperoni</text><br />
+            @Html.RadioButtonFor(t => t.PizzaType, "Sausage") <text>Sausage</text><br />
+            @Html.RadioButtonFor(t => t.PizzaType, "Supreme") <text>Supreme</text><br />
+            @Html.RadioButtonFor(t => t.PizzaType, "Veggie") <text>Veggie</text><br />
+            @Html.RadioButtonFor(t => t.PizzaType, "Meat Lover's") <text>Meat Lover's</text><br />
+            <br />
+            Now select a crust.<br />
+            <br />
+            @Html.RadioButtonFor(t => t.Crust, "Classic") <text>Classic</text><br />
+            @Html.RadioButtonFor(t => t.Crust, "Flatbread") <text>Flatbread</text><br />
+            @Html.RadioButtonFor(t => t.Crust, "Cheese Stuffed") <text>Cheese Stuffed</text><br />
+            @Html.RadioButtonFor(t => t.Crust, "Hand Tossed") <text>Hand Tossed</text><br />
+            <br />
+            Finally, the size of your pizza. (Small = 8$, Medium = 12$, Large = 15$)<br />
+            <br />
+            @Html.RadioButtonFor(t => t.Size, "Small") <text>Small</text><br />
+            @Html.RadioButtonFor(t => t.Size, "Medium") <text>Medium</text><br />
+            @Html.RadioButtonFor(t => t.Size, "Large") <text>Large</text><br />
+            <br />
+            <br />
+
+            <input type="submit" value="Add to Order" />
+
+        </form>
+    </p>
+</body>
+

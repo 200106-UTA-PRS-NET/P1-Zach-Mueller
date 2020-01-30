@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Pizza_Data.Models.Orders>
+
+@{
+    ViewData["Title"] = "UserOrders";
+}
+
+<h1>Displaying your Recent Orders</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCharges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCharges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                ]
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

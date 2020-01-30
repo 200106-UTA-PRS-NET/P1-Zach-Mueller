@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Pizza_Data.Models.Store>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Store Locations</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue)
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+}
+        At this time, Arlington is our only open location.
+        We do have plans to open up a location in Denver within a couple months. 
+    </tbody>
+</table>

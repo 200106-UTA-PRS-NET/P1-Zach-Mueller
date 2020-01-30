@@ -1,0 +1,18 @@
+﻿@using PizzaLib;
+@{
+    ViewData["Title"] = "Option";
+}
+
+<h1>Pizza added</h1>
+
+<body>
+    This one's been successfully added to your order.<br />
+    You can add another, or complete the order as is.<br />
+    As it stands, your current total is $<span>@(SessionStorage.total)</span><br />
+    <br />
+    Would you like to add another pizza to your order?<br />
+    <br />
+    <a href="https://localhost:5001/Pizza/Make">Yes</a><br />
+    <a href="https://localhost:5001/Order/Finish">No</a>
+
+</body>
