@@ -21,7 +21,21 @@ namespace PizzaWebApp.Controllers
        
         public IActionResult Index()
         {
-            return View();
+            var pizzas = _repository.GetPizzas();
+            List<PizzaViewModel> pvm = new List<PizzaViewModel>();
+            foreach (var item in pizzas)
+            {
+                PizzaViewModel piz = new PizzaViewModel();
+                piz.PizzaId = item.PizzaId;
+                piz.Crust = item.Crust;
+                piz.Size = item.Size;
+                piz.Username = item.Username;
+                piz.PizzaType = item.PizzaType;
+                piz.Price = item.Price;
+                pvm.Add(piz);
+            }
+            return View(pvm);
+            
         }
 
         public IActionResult OrderUp()

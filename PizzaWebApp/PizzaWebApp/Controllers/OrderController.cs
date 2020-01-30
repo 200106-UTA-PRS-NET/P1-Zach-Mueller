@@ -33,6 +33,7 @@ namespace PizzaWebApp.Controllers
             {
                 return RedirectToAction("Index", "Order");
             }
+            ModelState.AddModelError(string.Empty, "Nuh-uh-uh, you didn't say the magic word.");
             return View();
         }
 

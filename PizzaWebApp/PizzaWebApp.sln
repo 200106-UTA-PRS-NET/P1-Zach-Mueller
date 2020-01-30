@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizza_Data", "Pizza_Data\Pi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaLib", "PizzaLib\PizzaLib.csproj", "{4DA0164B-DBF1-4620-8928-83E871EFBCC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWebAppTest", "PizzaWebAppTest\PizzaWebAppTest.csproj", "{BEEADB9C-9120-45A1-85D0-5CA0D541C900}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWebAppTest", "PizzaWebAppTest\PizzaWebAppTest.csproj", "{32449BB9-9771-45FE-859C-004E23775376}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{4DA0164B-DBF1-4620-8928-83E871EFBCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA0164B-DBF1-4620-8928-83E871EFBCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA0164B-DBF1-4620-8928-83E871EFBCC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEEADB9C-9120-45A1-85D0-5CA0D541C900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEEADB9C-9120-45A1-85D0-5CA0D541C900}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEEADB9C-9120-45A1-85D0-5CA0D541C900}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEEADB9C-9120-45A1-85D0-5CA0D541C900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32449BB9-9771-45FE-859C-004E23775376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32449BB9-9771-45FE-859C-004E23775376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32449BB9-9771-45FE-859C-004E23775376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32449BB9-9771-45FE-859C-004E23775376}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
