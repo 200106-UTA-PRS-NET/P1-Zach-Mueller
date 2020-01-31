@@ -95,6 +95,10 @@ namespace PizzaWebApp.Controllers
         [HttpPost]
         public IActionResult Make(PizzaViewModel pizza)
         {
+            if (SessionStorage.total > 250)
+            {
+                return RedirectToAction("WoahBuddy", "Pizza");
+            }
 
             try
             {
@@ -148,6 +152,12 @@ namespace PizzaWebApp.Controllers
                 return View();
             }
         }
+        public IActionResult WoahBuddy()
+        {
+            SessionStorage.total = 0;
+            return View();
+        }
+
             
     }
 }
