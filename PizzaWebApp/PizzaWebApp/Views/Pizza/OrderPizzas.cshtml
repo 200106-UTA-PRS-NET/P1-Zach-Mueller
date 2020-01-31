@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Pizza_Data.Models.Pizzas>
+@{
+    ViewData["Title"] = "OrderPizzas";
+}
+
+<h1>Recently ordered Pizzas</h1>
+
+<p>
+    <a href="@Url.Action("MainMenu","Home")"> Return to main menu</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                ]
+            </td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+

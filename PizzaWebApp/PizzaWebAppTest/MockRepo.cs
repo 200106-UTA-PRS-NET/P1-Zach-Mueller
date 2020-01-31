@@ -30,6 +30,66 @@ namespace PizzaWebAppTest
             }
 
         };
+
+        static IEnumerable<Pizza_Data.Models.Orders> orders = new List<Pizza_Data.Models.Orders>()
+        {
+            new Orders(){
+            OrderId = 1,
+            TotalCharges = 20,
+            PlacedAt = DateTime.Today.ToString("dd-MM-yyyy"),
+            Username = "GoodSir",
+            StoreName = "OOP"
+            },
+            new Orders(){
+            OrderId=2,
+            TotalCharges = 35,
+            PlacedAt = DateTime.Today.ToString("dd-MM-yyyy"),
+            Username="poppop",
+            StoreName="OOP"          
+            }
+
+        };
+
+        static IEnumerable<Pizza_Data.Models.CompletedOrders> Comporders = new List<Pizza_Data.Models.CompletedOrders>()
+        {
+            new CompletedOrders(){
+            OrderId = 1,
+            
+            },
+            new CompletedOrders(){
+            OrderId=2,
+          
+            }
+
+        };
+
+        static IEnumerable<Pizza_Data.Models.Store> store = new List<Pizza_Data.Models.Store>()
+        {
+            new Store(){
+            StoreName = "Big Caesers",
+            Venue = "Denver CO"
+            },
+            new Store(){
+            StoreName = "Mama Johns",
+            Venue = "Maryville MO"
+            }
+
+        };
+
+        static IEnumerable<Pizza_Data.Models.User> user = new List<Pizza_Data.Models.User>()
+        {
+            new User(){
+            Username = "Carpe",
+            Pass = "Diem"
+            },
+            new User(){
+            Username = "Mock",
+            Pass = "Repo"
+            }
+
+        };
+
+
         public void AddPizza(Pizzas pizzas)
         {
             throw new NotImplementedException();

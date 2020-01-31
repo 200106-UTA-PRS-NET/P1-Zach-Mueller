@@ -68,6 +68,30 @@ namespace PizzaWebApp.Controllers
             return View();
         }
 
+        public IActionResult OrderPizzas()
+        {
+            var pizzas = _repository.GetPizzas();
+            List<Pizza_Data.Models.Pizzas> pvm = new List<Pizza_Data.Models.Pizzas>();
+            Pizza_Data.Repositories.PizzaRepository PU = new Pizza_Data.Repositories.PizzaRepository();
+            foreach (var item in pizzas)
+            {
+                if (item.Username == PizzaLib.SessionStorage.username)
+                {
+                    Pizza_Data.Models.Pizzas piz = new Pizza_Data.Models.Pizzas();
+                    piz.PizzaId = item.PizzaId;
+                    piz.PizzaType = item.PizzaType;
+                    piz.Username = item.Username;
+                    piz.Crust = item.Crust;
+                    piz.Size = item.Size;
+                    piz.Price = item.Price;
+
+                    pvm.Add(piz);
+                }
+            }
+
+            return View(pvm);
+        }
+
         [HttpPost]
         public IActionResult Make(PizzaViewModel pizza)
         {

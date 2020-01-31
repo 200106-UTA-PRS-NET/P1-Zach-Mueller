@@ -55,6 +55,8 @@ namespace PizzaWebApp.Controllers
             return View(ovm);
         }
 
+        
+
         public IActionResult UserOrders()
         {
             var orders = _repository.GetOrders();
@@ -75,6 +77,7 @@ namespace PizzaWebApp.Controllers
                     ovm.Add(ord);
                 }
             }
+            
             return View(ovm);
         }
 

@@ -7,7 +7,7 @@
 <h1>Displaying your Recent Orders</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="@Url.Action("MainMenu","Home")"> Return to main menu</a>
 </p>
 <table class="table">
     <thead>
@@ -52,6 +52,9 @@
                 ]
             </td>
         </tr>
+        
 }
     </tbody>
 </table>
+<br /> To view the pizzas associated with these order(s), <a href=@Url.Action("OrderPizzas","Pizza")>click here</a><br />
+
