@@ -45,7 +45,7 @@ namespace PizzaWebApp.Controllers
 
             foreach (var ord in ords) { 
 
-            if (ord.Username == SessionStorage.username && ord.PlacedAt == DateTime.Today.ToString("dd-MM-yyyy"))
+            if (ord.Username == UserController.SessionStorage.username && ord.PlacedAt == DateTime.Today.ToString("dd-MM-yyyy"))
                 {
                     return RedirectToAction("SlowDown", "Pizza");
                 } 
@@ -75,7 +75,7 @@ namespace PizzaWebApp.Controllers
             Pizza_Data.Repositories.PizzaRepository PU = new Pizza_Data.Repositories.PizzaRepository();
             foreach (var item in pizzas)
             {
-                if (item.Username == PizzaLib.SessionStorage.username)
+                if (item.Username == UserController.SessionStorage.username)
                 {
                     Pizza_Data.Models.Pizzas piz = new Pizza_Data.Models.Pizzas();
                     piz.PizzaId = item.PizzaId;
@@ -95,7 +95,7 @@ namespace PizzaWebApp.Controllers
         [HttpPost]
         public IActionResult Make(PizzaViewModel pizza)
         {
-            if (SessionStorage.total > 250)
+            if (UserController.SessionStorage.total > 250)
             {
                 return RedirectToAction("WoahBuddy", "Pizza");
             }
@@ -107,17 +107,17 @@ namespace PizzaWebApp.Controllers
                 if (pizza.Size == "Small")
                 {
                     charge = 8;
-                    SessionStorage.total += charge;
+                    UserController.SessionStorage.total += charge;
                 }
                 else if (pizza.Size == "Medium")
                 {
                     charge = 12;
-                    SessionStorage.total += charge;
+                    UserController.SessionStorage.total += charge;
                 }
                 else if (pizza.Size == "Large")
                 {
                     charge = 15;
-                    SessionStorage.total += charge;
+                    UserController.SessionStorage.total += charge;
                 }
 
                 if (ModelState.IsValid)
@@ -131,7 +131,7 @@ namespace PizzaWebApp.Controllers
                         PizzaType = pizza.PizzaType,
                         Crust = pizza.Crust,
                         Size = pizza.Size,
-                        Username = SessionStorage.username,
+                        Username = UserController.SessionStorage.username,
                         Price = charge
                     };
 
@@ -154,7 +154,7 @@ namespace PizzaWebApp.Controllers
         }
         public IActionResult WoahBuddy()
         {
-            SessionStorage.total = 0;
+            UserController.SessionStorage.total = 0;
             return View();
         }
 

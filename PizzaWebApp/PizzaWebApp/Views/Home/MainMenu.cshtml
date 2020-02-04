@@ -1,11 +1,12 @@
 ﻿@using PizzaLib;
+@using PizzaWebApp.Controllers;
 @{
     ViewData["Title"] = "MainMenu";
 }
 
 
 
-<h1>Welcome back @(SessionStorage.username)</h1>
+<h1>Welcome back @(UserController.SessionStorage.username)</h1>
 <p>What will it be today?</p>
 <b>
     <br />1: <a href="@Url.Action("OrderUp","Pizza")">Place an Order</a>

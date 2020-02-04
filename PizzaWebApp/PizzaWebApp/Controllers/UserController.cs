@@ -79,6 +79,12 @@ namespace PizzaWebApp.Controllers
         {
             return View();
         }
+        static public class SessionStorage
+        {
+            static public string username { get; set; }
+            static public decimal total { get; set; }
+
+        }
 
         public ActionResult Login(UserViewModel user)
         {

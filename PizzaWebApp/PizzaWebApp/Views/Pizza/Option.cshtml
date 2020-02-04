@@ -1,4 +1,5 @@
 ﻿@using PizzaLib;
+@using PizzaWebApp.Controllers;
 @{
     ViewData["Title"] = "Option";
 }
@@ -8,7 +9,7 @@
 <body>
     This one's been successfully added to your order.<br />
     You can add another, or complete the order as is.<br />
-    As it stands, your current total is $<span>@(SessionStorage.total)</span><br />
+    As it stands, your current total is $<span>@(UserController.SessionStorage.total)</span><br />
     <br />
     Would you like to add another pizza to your order?<br />
     <br />

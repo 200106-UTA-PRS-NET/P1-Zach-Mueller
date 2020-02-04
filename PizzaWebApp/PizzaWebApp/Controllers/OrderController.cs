@@ -65,7 +65,7 @@ namespace PizzaWebApp.Controllers
             string thisUser = GU.CurrentUser; 
             foreach (var item in orders)
             {
-               if (item.Username == PizzaLib.SessionStorage.username)
+               if (item.Username == UserController.SessionStorage.username)
                 {
                     Pizza_Data.Models.Orders ord = new Pizza_Data.Models.Orders();
                     ord.OrderId = item.OrderId;
@@ -88,9 +88,9 @@ namespace PizzaWebApp.Controllers
             string today = DateTime.Today.ToString("dd-MM-yyyy");
             Pizza_Data.Models.Orders ord = new Pizza_Data.Models.Orders()
             {
-                TotalCharges = SessionStorage.total,
+                TotalCharges = UserController.SessionStorage.total,
                 PlacedAt = today,
-                Username = SessionStorage.username,
+                Username = UserController.SessionStorage.username,
                 StoreName = "Object Oriented Pizza"
             };
 
