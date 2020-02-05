@@ -29,8 +29,7 @@ namespace PizzaWebApp
         {
             string connectionString = Configuration.GetConnectionString("OOP");
 
-            services.AddDbContext<OOPContext>(options =>
-                options.UseSqlServer(connectionString));
+            services.AddDbContext<OOPContext>(options => options.UseSqlServer(connectionString));
 
             services.AddTransient<IUserRepository<Pizza_Data.Models.User>, UserRepository>();
             services.AddTransient<IPizzaRepository<Pizza_Data.Models.Pizzas>, PizzaRepository>();
@@ -45,6 +44,7 @@ namespace PizzaWebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

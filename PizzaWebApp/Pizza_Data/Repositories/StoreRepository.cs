@@ -11,10 +11,7 @@ namespace Pizza_Data.Repositories
     {
         OOPContext pdb;
 
-        public StoreRepository()
-        {
-            pdb = new OOPContext();
-        }
+       
 
         public StoreRepository(OOPContext pdb)
         {

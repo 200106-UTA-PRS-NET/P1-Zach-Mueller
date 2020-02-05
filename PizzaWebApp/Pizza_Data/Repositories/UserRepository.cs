@@ -11,12 +11,6 @@ namespace Pizza_Data.Repositories
     public class UserRepository : PizzaLib.Abstractions.IUserRepository<User>
     {
         OOPContext pdb;
-        
-
-        public UserRepository()
-        {
-            pdb = new OOPContext();
-        }
 
         public UserRepository(OOPContext pdb)
         {

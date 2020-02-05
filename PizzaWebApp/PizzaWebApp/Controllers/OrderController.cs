@@ -57,12 +57,10 @@ namespace PizzaWebApp.Controllers
 
         
 
-        public IActionResult UserOrders()
+        public IActionResult UserOrders([FromServices]IOrderRepository<Pizza_Data.Models.Orders> GU )
         {
             var orders = _repository.GetOrders();
             List<Pizza_Data.Models.Orders> ovm = new List<Pizza_Data.Models.Orders>();
-            Pizza_Data.Repositories.UserRepository GU = new Pizza_Data.Repositories.UserRepository();
-            string thisUser = GU.CurrentUser; 
             foreach (var item in orders)
             {
                if (item.Username == UserController.SessionStorage.username)

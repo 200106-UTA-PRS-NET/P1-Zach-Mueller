@@ -38,9 +38,9 @@ namespace PizzaWebApp.Controllers
             
         }
 
-        public IActionResult OrderUp()
+        public IActionResult OrderUp([FromServices] IOrderRepository<Pizza_Data.Models.Orders> gg)
         {
-            OrderRepository gg = new OrderRepository();
+            
             var ords = gg.GetOrders();
 
             foreach (var ord in ords) { 
@@ -68,11 +68,10 @@ namespace PizzaWebApp.Controllers
             return View();
         }
 
-        public IActionResult OrderPizzas()
+        public IActionResult OrderPizzas([FromServices] IPizzaRepository<Pizza_Data.Models.Pizzas> PU)
         {
             var pizzas = _repository.GetPizzas();
             List<Pizza_Data.Models.Pizzas> pvm = new List<Pizza_Data.Models.Pizzas>();
-            Pizza_Data.Repositories.PizzaRepository PU = new Pizza_Data.Repositories.PizzaRepository();
             foreach (var item in pizzas)
             {
                 if (item.Username == UserController.SessionStorage.username)

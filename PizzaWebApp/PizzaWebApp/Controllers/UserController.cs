@@ -24,9 +24,9 @@ namespace PizzaWebApp.Controllers
 
         
         //GET USERS
-        public IActionResult Index()
+        public IActionResult Index([FromServices] IUserRepository<Pizza_Data.Models.User> UR)
         {
-            var users = _repository.GetUsers();
+            var users = UR.GetUsers();
             List<UserViewModel> uvm = new List<UserViewModel>();
             foreach (var item in users)
             {
@@ -86,10 +86,9 @@ namespace PizzaWebApp.Controllers
 
         }
 
-        public ActionResult Login(UserViewModel user)
+        public ActionResult Login(UserViewModel user, [FromServices] IUserRepository<Pizza_Data.Models.User> UR)
         {
             SessionStorage.total = 0;
-            Pizza_Data.Repositories.UserRepository UR = new Pizza_Data.Repositories.UserRepository();
                 var useGet = UR.GetUsers();
                 foreach (var use in useGet)
                 {
