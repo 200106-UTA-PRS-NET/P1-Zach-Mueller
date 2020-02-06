@@ -13,8 +13,53 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  pathtosolution: 'PizzaWebApp/'
+  pathtoproject: 'PizzaWebApp/PizzaWebApp'
+  pathtotest: 'PizzaWebApp/PizzaWebAppTest'
+
+
 
 steps:
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'PizzaWebService'
+    organization: 'objectorientedpizza'
+    scannerMode: 'MSBuild'
+    projectKey: 'objectorientedpizza'
+    projectName: 'PizzaWebApp'
+    extraProperties: 
+      sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
+      sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
+      sonar.exclusions=**/wwwroot/lib/**/*
+  
+
+- script:
+    dotnet build --configuration $(buildConfiguration)
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet build $(buildConfiguration)'
+
+
+- script: dotnet test
+    --configuration $(buildConfiguration)
+    -- logger trx
+    -- no-build
+    --results-directory $(Build.ArtifactStagingDirectory)/test
+    /p:CollectCoverage=true
+  workingDirectory: $(pathtosolution)
+  displayName: 'dotnet test'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(pathtotest)'
+    workingDirectory: '$(pathtosolution)'
+
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -32,3 +77,27 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    arguments: --configuration $(buildConfiguration)
+    publishWebProjects: true
+    zipAfterPublish: true
+    workingDirectory: '$(pathtosolution)'
+  displayName: 'dotnet publish + zip'
+####--- CI END
+
+## CDelivery Start taking artifact as an input
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(ab899267-9abf-46aa-9bb0-d56f170f9a41)'
+    appType: 'webAppLinux'
+    appName: 'PizzaDb'
+    deployToSlotOrASE: true
+    resourceGroupName: '200106-UTA-PRS-NET'
+    slotName: 'production'
+    package: '$(System.ArtifactDirectory)/**/*.zip'
+
