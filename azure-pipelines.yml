@@ -31,14 +31,7 @@ steps:
       sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
       sonar.cs.vstest.reportsPaths="$(Build.ArtifactStagingDirectory)/test/*.trx"
       sonar.exclusions=**/wwwroot/lib/**/*
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure subscription 1(ab899267-9abf-46aa-9bb0-d56f170f9a41)'
-    appType: 'webAppLinux'
-    appName: 'PizzaDb'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-
-    
+  
 
 - script:
     dotnet build --configuration $(buildConfiguration)
@@ -83,3 +76,24 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    arguments: --configuration $(buildConfiguration)
+    publishWebProjects: true
+    zipAfterPublish: true
+    workingDirectory: '$(pathtosolution)'
+  displayName: 'dotnet publish + zip'
+####--- CI END
+
+## CDelivery Start taking artifact as an input
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise with MSDN(581982a8-2cbb-485e-b313-4da4b27d42f1)'
+    appType: 'webAppLinux'
+    appName: 'PizzaDb'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+    ## CD ends
