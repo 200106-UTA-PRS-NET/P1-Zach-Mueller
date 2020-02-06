@@ -90,19 +90,14 @@ steps:
 ####--- CI END
 
 ## CDelivery Start taking artifact as an input
+
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Visual Studio Enterprise with MSDN(581982a8-2cbb-485e-b313-4da4b27d42f1)'
+    azureSubscription: 'Azure subscription 1(ab899267-9abf-46aa-9bb0-d56f170f9a41)'
     appType: 'webAppLinux'
     appName: 'PizzaDb'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deployToSlotOrASE: true
+    resourceGroupName: '200106-UTA-PRS-NET'
+    slotName: 'production'
+    package: '$(System.ArtifactDirectory)/**/*.zip'
 
-    ## CD ends
-
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'PizzaWebService'
-    organization: 'objectorientedpizza'
-    scannerMode: 'MSBuild'
-    projectKey: 'objectorientedpizza'
-    projectName: 'PizzaWebApp'
