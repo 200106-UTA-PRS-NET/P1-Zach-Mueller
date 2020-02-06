@@ -20,12 +20,13 @@ variables:
 
 
 steps:
+
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'PizzaToken'
+    SonarCloud: 'PizzaWebService'
     organization: 'objectorientedpizza'
     scannerMode: 'MSBuild'
-    projectKey: '$(SonarProjectKey)'
+    projectKey: 'objectorientedpizza'
     projectName: 'PizzaWebApp'
     extraProperties: 
       sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
@@ -97,3 +98,11 @@ steps:
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
     ## CD ends
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'PizzaWebService'
+    organization: 'objectorientedpizza'
+    scannerMode: 'MSBuild'
+    projectKey: 'objectorientedpizza'
+    projectName: 'PizzaWebApp'
