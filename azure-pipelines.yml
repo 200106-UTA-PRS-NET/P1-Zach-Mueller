@@ -22,10 +22,10 @@ variables:
 steps:
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'EMSSonarServiceConnection'
-    organization: '200106-uta-prs-net'
+    SonarCloud: 'PizzaToken'
+    organization: 'objectorientedpizza'
     scannerMode: 'MSBuild'
-    projectKey: 'PizzaToken'
+    projectKey: '$(SonarProjectKey)'
     projectName: 'PizzaWebApp'
     extraProperties: 
       sonar.cs.opencover.reportsPaths="$(Build.ArtifactStagingDirectory)/coverage/*"
